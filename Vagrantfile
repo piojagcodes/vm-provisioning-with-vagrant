@@ -27,6 +27,9 @@ Vagrant.configure("2") do |config|
         v.customize ["modifyvm", :id, "--memory", 512]
         v.customize ["modifyvm", :id, "--name", machine[:hostname]]
       end
+    node.vm.provision "shell", inline: <<-SHELL
+      /vagrant/provision/install_nginx.sh
+    SHELL
     end
   end
 
