@@ -22,9 +22,9 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define "docker" do |docker|
-    lamp.vm.network "private network", ip:
+    docker.vm.network "private network", ip:
     "192.168.33.11"
-    lamp.provision "shell", inline: <<-SHELL
+    docker.provision "shell", inline: <<-SHELL
       apt-get clean
       apt update -y
     SHELL
@@ -87,4 +87,4 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
-end
+
