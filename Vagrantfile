@@ -12,6 +12,15 @@ Vagrant.configure("2") do |config|
     vb.memory = "1024"
   end
 
+  config.vm.define "lamp" do |lamp|
+    lamp.vm.network "private network", ip:
+    "192.168.33.10"
+    lamp.provision "shell", inline: <<-SHELL
+      apt-get clean
+      apt update -y
+    SHELL
+  end
+
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
